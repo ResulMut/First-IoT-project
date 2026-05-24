@@ -1,0 +1,446 @@
+* {
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+    background-color: #0f172a;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header{
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(5px);
+    background-color: rgba(83, 82, 82, 0.3);
+    padding: 12px;
+}
+.position ul{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    list-style: none;
+    transition: all 0.3s linear;
+}
+.position a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s linear;
+}
+header a:hover{
+    color: #3b82f6;
+}
+.active:hover{
+    transform: scale(1.1);
+}
+.hero-h1{
+    font-size: 42px;
+    font-weight: bold;
+    text-align: center;
+    color: #3b82f6;
+}
+.hero-text{
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(170, 170, 170);
+}
+.hero-img{
+    width: 60%;
+    height: auto;
+    border-radius: 12px;
+}
+.hero-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 48px;
+}
+.hero-btn{
+    display: flex;
+    gap: 32px;
+}
+.hero-btn button{
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-top: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s linear;
+    box-shadow:  4px 5px 70px rgba(59, 130, 246, 0.5);
+    height: 72px;
+    width: 180px;
+}
+.hero-btn button:hover{
+    background-color: #0953f1;
+    transform: scale(1.1);
+}
+.about-content h2{
+    font-size: 42px;
+    font-weight: bold;
+    text-align: center;
+    margin: 120px 0 48px 0;
+    color: #3b82f6;
+}
+.vision{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 24px 120px 48px;
+    padding: 48px;
+}
+.vision-content1{
+    margin-right: 60px;
+}
+.vision-content2{
+    margin-right: 72px;
+}
+.vision-content3{
+    margin-right: 60px;
+} 
+.about-img{
+    height: 300px;
+    width: auto;
+    border-radius: 12px;
+}
+.features-header h2{
+    font-size: 42px;
+    font-weight: bold;
+    color: #3b82f6;
+    text-align: center;
+}
+.features-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 48px 0 120px 50px;
+    gap: 120px;
+    margin-top: 72px;
+}
+.features-card1, .features-card2, .features-card3{
+    background-color: rgba(83, 82, 82, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+    height: 60px;
+    transition: all 0.3s linear;
+    height: 86px;
+}
+.features-card1 p, .features-card2 p  , .features-card3 p{
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+#features i{
+    margin-right: 8px;
+}
+.features-card1:hover, .features-card2:hover, .features-card3:hover{
+    background-color: rgba(37, 37, 37, 0.3);
+    transform: scale(1.1);
+}
+.sensor-kutusu1, .sensor-kutusu2{
+    background-color: rgba(83, 82, 82, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px;
+    max-width: 600px; 
+    margin: 42px auto;
+    border-radius: 12px;
+    transition: all 0.3s linear;
+}
+.kontrol-paneli{
+    background-color: rgba(83, 82, 82, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px;
+    max-width: 600px; 
+    margin: 42px auto;
+
+    border-radius: 12px;
+    transition: all 0.3s linear;
+}
+.kontrol-paneli button{
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s linear;
+    box-shadow:  4px 5px 70px rgba(59, 130, 246, 0.5);
+}
+.kontrol-paneli button:hover{
+    background-color: #0953f1;
+    transform: scale(1.1);
+}
+.sensor-kutusu1:hover, .sensor-kutusu2:hover{
+    background-color: rgba(37, 37, 37, 0.3);
+    transform: scale(1.1);
+}
+.ai-asistan-paneli{
+    background-color: rgba(83, 82, 82, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px 0 36px 0;
+    max-width: 600px; 
+    margin: 42px auto;
+
+    border-radius: 12px;
+    transition: all 0.3s linear;
+}
+.ai-asistan-paneli button{
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin-left: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s linear;
+    box-shadow:  4px 5px 70px rgba(59, 130, 246, 0.5);
+}
+.ai-asistan-paneli button:hover{
+    background-color: #0953f1;
+    transform: scale(1.1);
+}
+.ai-asistan-paneli input{
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    width: 300px;
+}
+.fiyat-salteri{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 48px;
+}
+.fiyat-salteri button{
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s linear;
+    box-shadow:  4px 5px 70px rgba(59, 130, 246, 0.5);
+}
+.fiyat-salteri button:hover{
+    background-color: #0953f1;
+    transform: scale(1.1);
+}
+.fiyat-salteri button.aktif{
+    background-color: #3b83f6;
+    color: white;
+}
+.fiyat-salteri button{
+    background: transparent;
+    border: 1px solid #3b82f6;
+    color: #3b83f6; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.pricing-table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 72px;
+    margin-top: 48px;
+}
+.pricing-option{
+    background-color: rgba(83, 82, 82, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+    width: 300px;
+    height: 170px;
+    transition: all 0.3s linear;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+.pricing-option:hover{
+    background-color: rgba(37, 37, 37, 0.3);
+    transform: scale(1.1);
+}
+.demo-header{
+    font-size: 42px;
+    font-weight: bold;
+    color: #3b82f6;
+    text-align: center;
+    margin-top: 240px;
+}
+.pricing-header{
+    font-size: 42px;
+    font-weight: bold;
+    color: #3b82f6;
+    text-align: center;
+    margin-top: 240px;
+}
+.faq-header{
+    font-size: 42px;
+    font-weight: bold;
+    color: #3b82f6;
+    text-align: center;
+    margin-top: 240px;
+}
+.contact-header{
+    font-size: 42px;
+    font-weight: bold;
+    color: #3b82f6;
+    text-align: center;
+    margin-top: 240px;
+}
+.faq-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.faq-item i{
+    margin-left: 8px;
+}
+.faq-soru{
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s linear;
+    width: 400px;
+        display: flex;
+        margin-bottom: 42px;
+}
+.faq-soru i {
+    transition: transform 0.3s ease;
+    margin-left: 10px; 
+}
+.faq-soru:hover{
+    background-color: #0953f1;
+    transform: scale(1.1);
+}
+.faq-cevap{
+    background-color: rgba(83, 82, 82, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+    width: 400px;
+    display: none;
+    margin-bottom: 42px;
+}
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+}
+.contact-text, .contact-mail, .contact-message{
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    width: 20%;
+    height: auto;
+}
+.contact-text:hover, .contact-text:focus, .contact-mail:hover,.contact-mail:focus, .contact-message:hover,.contact-message:focus{
+    border: 4px solid #3b82f6;
+    outline: none;
+}
+.contact-btn{
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s linear;
+    box-shadow:  4px 5px 70px rgba(59, 130, 246, 0.5);
+}
+.contact-btn:hover{
+    background-color: #0953f1;
+    transform: scale(1.1);
+}
+footer{
+    background-color: rgba(83, 82, 82, 0.3);
+    padding: 12px;
+    text-align: center;
+    margin-top: 120px;
+}
+.social-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    gap: 24px;
+    color: white;
+}
+footer a{
+    color: white;
+    transition: all 0.3s linear;
+}
+
+.koyu-menu{
+    background-color: rgba(15 ,23, 42, 0.95) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px){
+    header {
+        padding: 20px;
+        border-radius: 18px;
+    }
+    .position ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 20px;
+        padding: 10px 15px;
+        margin: 5px 0 0 0;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+    .position ul::-webkit-scrollbar {
+        display: none; 
+    }
+    .position ul li a {
+        font-size: 16px !important; 
+        padding: 2px 4px;      
+    }
+    .vision{
+        flex-direction: column !important; 
+        gap: 40px;
+    }
+    .features-content{
+        grid-template-columns: 1fr !important; 
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .contact-text, .contact-mail, .contact-message{
+        width: 90% !important;
+    }
+    .pricing-table {
+        flex-direction: column !important;
+}
+}

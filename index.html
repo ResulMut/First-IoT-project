@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav class = "position">
+        <ul>
+            <li class="active"><a href="#hero">Ana Sayfa</a></li>
+            <li><a href="#about">Hakkımda</a></li>
+            <li><a href="#features">Özellikler</a></li>
+            <li><a href="#demo">Canlı Demo</a></li>
+            <li><a href="#pricing">Fiyatlandırma</a></li>
+            <li><a href="#faq">Sıkça Sorulan Sorular</a></li>
+            <li><a href="#contact">İletişim</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="hero" class="hero-section" >
+    <div class="hero-content">
+    <h1 class="hero-h1">Hoş Geldiniz</h1>
+    <p class="hero-text">Sensör verilerini anlık olarak takip eden, su pompası ve röleleri web üzerinden yönetmeni sağlayan full-stack otomasyon projesi.</p>
+    <img src="img/heroBG.jpg" alt="Hero Image" class="hero-img">
+    <div class="hero-btn">
+    <button id="systemBtn" class="systemBtn">Sistemi Keşfet</button>
+    <button  id="demoBtn" class="demoBtn">Canlı Demo</button>
+    </div>
+    </div>
+</section>
+
+
+<section id="about"  class="about-section">
+    <div class="about-content">
+    <h2>Vizyonumuz</h2>
+<div class = "vision">
+    
+    <div class="vision-content1">
+        <p class="about-text">ileri düzey elektronik donanımları ve yapay zeka destekli arayüzleri tek bir çatı altında toplayarak, tarımsal otomasyonu herkes için erişilebilir, güvenilir ve yüksek verimli kılmaktır. Geleceğin teknolojisini, bugünün topraklarıyla buluşturuyoruz.</p>
+        <img src="img/img1.jpg" alt="Vision Image" class="about-img">
+    </div>
+    
+
+    <div class="vision-content2">
+        <p class="about-text">mikrodenetleyiciler ve akıllı ekran modülleriyle donattığımız lokal IoT sistemleri sayesinde, tarımsal üretimi tamamen veri odaklı hale getirmektir. Doğru zamanda doğru müdahale mantığıyla çalışan donanımlarımızla, su ve enerji tasarrufunu maksimuma çıkarırken bitki sağlığını koruyan akıllı yaşam alanları inşa ediyoruz.</p>
+        <img src="img/img2.jpg" alt="Vision Image" class="about-img">
+    </div>
+
+    <div class = "vision-content3">
+        <p class="about-text">devre şemasının çiziminden gömülü sistem yazılımına, arayüz tasarımından sunucu entegrasyonuna kadar bir IoT projesinin tüm süreçlerini uçtan uca kendi özgün mühendisliğimizle inşa etmektir. Teknolojiyi dışarıdan alan değil, devre kartının üzerindeki en küçük pasif komponente kadar tasarlayan ve üreten bir teknoloji vizyonuyla geleceğe ilerliyoruz.</p>
+        <img src="img/img3.jpg" alt="Vision Image" class="about-img">
+    </div>
+</div>    
+    </div>
+    </section>
+
+
+<section id="features">
+    <div class="features-header">
+    <h2>Özellikler</h2>
+    </div>
+    <div class="features-content">
+        <div class="features-card1">
+            <p><i class="fa-solid fa-robot"></i>Gelişmiş Yapay Zeka</p>
+        </div>
+        <div class="features-card2">
+            <p><i class="fa-solid fa-microchip"></i>Manuel Sensör Kontrolü</p>
+        </div>
+        <div class="features-card3">
+            <p><i class="fa-solid fa-person"></i>7/24 Kesintisiz Erişim</p>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="demo">
+    <h2 class="demo-header">Canlı Demo: Sistem Kontrol Paneli</h2>
+    <div class = "dashboard-container">
+            <div class = "sensor-kutusu1">
+                <h3>Sıcaklık : </h3>
+                <p id="demo-sicaklik">25°C</p>
+            </div>
+
+        <div class="sensor-kutusu2">
+                <h3>Nem : </h3>
+                <p id="demo-nem">60%</p>
+            </div>
+            
+        <div class = "kontrol-paneli">
+            <h3>Saha Kontrolü</h3>
+            <button id="demo-pompaBtn" class="demoPompaBtn">Sistem : Kapalı</button>
+        </div>
+        </div>
+
+        <div class="ai-asistan-paneli">
+            <h3>Sistem Asistanı</h3>
+            <div class="chat-ekrani" id="chatEkrani">
+                <p><strong>Sistem:</strong> Bağlantı kuruldu. Manuel komutlarınızı veya sorularınızı bekliyorum.</p>
+            </div>
+            <div class="chat-input-alani">
+                <input type="text" id="chatInput" placeholder="Sisteme komut yazın...(ÖRN: sıcaklık, nem)">
+                <button id="chatGonderBtn">Gönder</button>
+            </div>
+        </div>
+    
+</section>
+
+
+
+
+<section id="pricing">
+    <h2 class="pricing-header">Fiyatlandırma</h2>
+    
+    <div class="fiyat-salteri">
+        <button id="aylikBtn" class="aktif">Aylık Ödeme</button>
+        <button id="yillikBtn">Yıllık Ödeme (%20 İndirimli)</button>
+    </div>
+    
+    <div class="pricing-table">
+        <div class="pricing-option">
+            <h3>Temel Plan</h3>
+            <div class="fiyat-alani">
+                <span class="fiyat-rakam">Ücretsiz</span>
+            </div>
+        </div>
+
+        <div class="pricing-option">
+            <h3>Profesyonel Plan</h3>
+            <div class="fiyat-alani">
+                <span class="fiyat-degeri" data-aylik="49.99">49.99</span>
+                <span class="para-birimi">$/ay</span>
+            </div>
+        </div>
+
+        <div class="pricing-option">
+            <h3>Kurumsal Plan</h3>
+            <div class="fiyat-alani">
+                <span class="fiyat-degeri" data-aylik="99.99">99.99</span>
+                <span class="para-birimi">$/ay</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="faq">
+    <h2 class="faq-header">Sıkça Sorulan Sorular</h2>
+    <div class="faq-container">
+
+
+        <div class="faq-item">
+            <button class="faq-soru">Sistem diğer sensörlerle uyumlu mu? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="faq-cevap">
+                <p>Evet, sistemimiz endüstri standardı olan SHT serisi ve diğer mikrodenetleyici donanımlarıyla tam uyumlu çalışacak şekilde tasarlanmıştır.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-soru">İnternet koptuğunda ne olur? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="faq-cevap">
+                <p>Sistem lokal ağ üzerinden manuel kontrolü destekler. Dış API bağlantısı kopsa dahi cihazlarınıza erişmeye devam edebilirsiniz.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-soru">Kurulum için teknik bilgi şart mı? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="faq-cevap">
+                <p>Hayır, tak-çalıştır modüllerimiz ve yapay zeka asistanımız sayesinde dakikalar içinde sisteminizi ayağa kaldırabilirsiniz.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="contact">
+    <h2 class="contact-header">İletişim</h2>
+    <form class="contact-form" id="contactForm">
+        <input type="text" placeholder="Adınız" required class="contact-text" id="contactText">
+        <input type="email" placeholder="E-posta Adresiniz" required class="contact-mail" id="contactMail">
+        <textarea placeholder="Mesajınız" required class="contact-message" id="contactMessage"></textarea>
+        <button type="submit" class="contact-btn" id="contactBtn">Gönder</button>
+    </form>
+</section>
+
+
+
+
+<footer>
+    <p>&copy; 2024 Tüm Hakları Saklıdır.Resul MUT</p>
+    <div class="social-icons">
+        <a href="https://github.com/ResulMut" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/resul-mut" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/resulmut" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+</footer>
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
