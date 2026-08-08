@@ -167,28 +167,41 @@ if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
         e.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
 
+        const form = e.target;
+        const formData = new FormData(form);
         const contactBtn = document.getElementById("contactBtn");
         const nameInput = document.getElementById("contactText");
-        const formData = new FormData(contactForm);
 
         contactBtn.textContent = "Gönderiliyor...";
         contactBtn.disabled = true;
 
-        fetch("https://formsubmit.co/ajax/resulmut49@gmail.com", {
-            method: "POST",
+        fetch(form.action, {
+            method: form.method,
             body: formData,
             headers: {
                 'Accept': 'application/json'
-            },
+            }
         })
-        .then(response => response.ok ? response.json() : Promise.reject(response))
-        .then(data => {
-            displayFormStatus(`Teşekkürler ${nameInput.value}! Mesajınız başarıyla iletildi.`, 'success');
-            contactForm.reset();
+        .then(response => {
+            if (response.ok) { // Sunucudan başarılı bir yanıt (2xx) geldiyse
+                 displayFormStatus(`Teşekkürler ${nameInput.value}! Mesajınız başarıyla iletildi.`, 'success');
+                 form.reset();
+             } else { // Sunucudan bir hata yanıtı (4xx, 5xx) geldiyse
+                 // Formspree'den gelen JSON formatındaki hatayı işlemeye çalışalım
+                 response.json().then(data => {
+                     if (Object.hasOwn(data, 'errors')) {
+                         // Hata mesajını kullanıcıya göster
+                         const errorMessage = data.errors.map(error => error.message).join(", ");
+                         displayFormStatus(`Hata: ${errorMessage}`, 'error');
+                     } else {
+                         displayFormStatus('Bir sunucu hatası oluştu. Lütfen tekrar deneyin.', 'error');
+                     }
+                 });
+             }
         })
         .catch(error => {
             console.error('Form gönderme hatası:', error);
-            displayFormStatus('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.', 'error');
+            displayFormStatus('Ağ hatası oluştu. Lütfen internet bağlantınızı kontrol edin.', 'error');
         })
         .finally(() => {
             contactBtn.textContent = "Mesajı Gönder";

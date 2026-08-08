@@ -154,12 +154,12 @@
 
 <section id="contact">
     <h2 class="contact-header">İletişime Geçin</h2>
-    <form class="contact-form" id="contactForm">
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mgoppozv" method="POST">
         <div class="form-row">
-            <input type="text" placeholder="Ad Soyad" required class="contact-text" id="contactText">
-            <input type="email" placeholder="E-posta Adresi" required class="contact-mail" id="contactMail">
+            <input type="text" name="name" placeholder="Ad Soyad" required class="contact-text" id="contactText">
+            <input type="email" name="email" placeholder="E-posta Adresi" required class="contact-mail" id="contactMail">
         </div>
-        <textarea placeholder="Proje ile ilgili mesajınız veya teklifiniz..." required class="contact-message" id="contactMessage"></textarea>
+        <textarea name="message" placeholder="Proje ile ilgili mesajınız veya teklifiniz..." required class="contact-message" id="contactMessage"></textarea>
         <button type="submit" class="contact-btn" id="contactBtn">Mesajı Gönder</button>
     </form>
 </section>
