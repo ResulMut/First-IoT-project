@@ -1,181 +1,219 @@
-let header = document.querySelector("header");
-window.addEventListener("scroll", () => {
-    if(window.scrollY >50){
-        header.classList.add("koyu-menu");
-    }else{
-    header.classList.remove("koyu-menu");
+document.addEventListener("DOMContentLoaded", () => {
+
+    // 1. Header Scroll Effect
+    const header = document.querySelector("header");
+    if (header) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("koyu-menu");
+            } else {
+                header.classList.remove("koyu-menu");
+            }
+        });
     }
-});
 
+    // 2. Hero Button Smooth Scroll
+    const systemBtn = document.getElementById("systemBtn");
+    const demoBtn = document.getElementById("demoBtn");
+    const architectureSection = document.getElementById("architecture");
+    const dashboardSection = document.getElementById("dashboard");
 
-let systemBtn = document.getElementById("systemBtn");
-let demoBtn = document.getElementById("demoBtn");
-let hedefOzellikler = document.getElementById("features");
-let hedefDemo = document.getElementById("demo");
-
-systemBtn.addEventListener("click", () =>{
-    hedefOzellikler.scrollIntoView({behavior: "smooth"});
-});
-demoBtn.addEventListener("click", () => {
-    hedefDemo.scrollIntoView({behavior: "smooth"});
-}); 
-
-
-let demoSicaklik = document.getElementById("demo-sicaklik");
-let demoNem = document.getElementById("demo-nem");
-
-function sensorGuncelle(){
-let yeniSicaklik = Math.floor(Math.random() * 16 ) + 20;
-let yeniNem = Math.floor(Math.random() * 41) + 40;
-demoSicaklik.innerHTML = `${yeniSicaklik} °C`
-demoNem.innerHTML = `${yeniNem} %`
-}
-
-
-let sensorMotoru;
-let suPompaBtn = document.getElementById("demo-pompaBtn");
-let pompaAcik = false;
-suPompaBtn.addEventListener("click", () => {
-    if(pompaAcik == false){
-        suPompaBtn.innerHTML = "Sistem : Açık";
-        suPompaBtn.style.backgroundColor = "green";
-        suPompaBtn.style.boxShadow = "1px 2px 32px green";
-        sensorMotoru = setInterval(sensorGuncelle,2000);
-
-        pompaAcik = true;
-
-    }else{
-        suPompaBtn.innerHTML = "Sistem : Kapalı";
-        suPompaBtn.style.backgroundColor = "red";
-        suPompaBtn.style.boxShadow = "1px 2px 32px red";
-        clearInterval(sensorMotoru);
-        pompaAcik = false;
+    if (systemBtn && architectureSection) {
+        systemBtn.addEventListener("click", () => {
+            architectureSection.scrollIntoView({ behavior: "smooth" });
+        });
     }
-});
-
-
-let gonderBtn = document.getElementById("chatGonderBtn");
-let chatInput = document.getElementById("chatInput");
-let chatEkran = document.getElementById("chatEkrani");
-
-gonderBtn.addEventListener("click", () => {
-    let text = chatInput.value;
-    if(text.trim() ==="") return;
-    let kucukText = text.toLowerCase();
-    chatEkran.innerHTML += `<p><strong>Siz:</strong> ${text}</p>`;
-    let anlikSicaklik = document.getElementById("demo-sicaklik").innerHTML;
-    let anlikNem = document.getElementById("demo-nem").innerHTML;
-
-    if(kucukText.includes("sıcaklık") || kucukText.includes("derece")){
-        chatEkran.innerHTML += `<p><strong>Sistem:</strong> Ortam sıcaklığı şu an ${anlikSicaklik}</p>`;
+    if (demoBtn && dashboardSection) {
+        demoBtn.addEventListener("click", () => {
+            dashboardSection.scrollIntoView({ behavior: "smooth" });
+        });
     }
-    else if (kucukText.includes("nem")){
-        chatEkran.innerHTML += `<p><strong>Sistem:</strong> Ortam nem seviyesi şu an ${anlikNem}</p>`;
-} else{
-    chatEkran.innerHTML += `<p><strong>Sistem:</strong> Bu komutu anlayamadım</p>`;
-}
-chatInput.value = "";
-chatEkran.scrollTop = chatEkran.scrollHeight;
-});
 
+    // 3. Dashboard & Sensor Simulation
+    const valTemp = document.getElementById("val-temp");
+    const valHumidity = document.getElementById("val-humidity");
+    const pumpToggleBtn = document.getElementById("pump-toggle");
+    const systemStatus = document.getElementById("system-status");
 
-let ayBtn = document.getElementById("aylikBtn");
-let yilBtn = document.getElementById("yillikBtn");
+    let sensorInterval;
+    let isPumpActive = false;
 
-yilBtn.addEventListener("click", () => {
-    yilBtn.classList.add("aktif");
-    ayBtn.classList.remove("aktif");
-    let tumFiyatlar = document.querySelectorAll(".fiyat-degeri");
+    function updateSensorReadings() {
+        if (!valTemp || !valHumidity) return;
 
-    tumFiyatlar.forEach(fiyat => {
-    let aylikUcret = fiyat.getAttribute("data-aylik");
-    let yillikHesap = aylikUcret * 10;
-    fiyat.innerHTML = Math.floor(yillikHesap);
+        const newTemp = (Math.random() * 10 + 22).toFixed(1); // 22.0 - 32.0
+        const newHumidity = (Math.random() * 30 + 45).toFixed(1); // 45.0 - 75.0
 
-    let paraBirimiEtiketi = fiyat.nextElementSibling;
-    if(paraBirimiEtiketi && paraBirimiEtiketi.classList.contains("para-birimi")){
-        paraBirimiEtiketi.innerHTML = "$/yıl";
+        valTemp.innerHTML = `${newTemp}<span class="unit">°C</span>`;
+        valHumidity.innerHTML = `${newHumidity}<span class="unit">%</span>`;
     }
-});
-});
 
-ayBtn.addEventListener("click", () => {
-    ayBtn.classList.add("aktif");
-    yilBtn.classList.remove("aktif");
-    let tumFiyatlar = document.querySelectorAll(".fiyat-degeri");
-
-    tumFiyatlar.forEach(fiyat => {
-        let aylikUcret = fiyat.getAttribute("data-aylik");
-        fiyat.innerHTML = aylikUcret;
-
-        let paraBirimiEtiketi = fiyat.nextElementSibling;
-    if(paraBirimiEtiketi && paraBirimiEtiketi.classList.contains("para-birimi")){
-        paraBirimiEtiketi.innerHTML = "$/ay";
+    if (pumpToggleBtn) {
+        pumpToggleBtn.addEventListener("click", togglePump);
     }
-});
-});
 
+    function togglePump() {
+        isPumpActive = !isPumpActive;
 
-
-let sorular = document.querySelectorAll(".faq-soru");
-
-sorular.forEach(soru => {
-
-    soru.addEventListener("click", function() {
-
-        let cevap = this.nextElementSibling;
-        let mevcutStil = window.getComputedStyle(cevap).display;
-
-        if (mevcutStil === "none") {
-            cevap.style.display = "block";
-            let ikon = this.querySelector("i");
-            if(ikon) ikon.style.transform = "rotate(180deg)";
-
+        if (isPumpActive) {
+            pumpToggleBtn.textContent = "Sistemi Durdur";
+            pumpToggleBtn.classList.add("active");
+            if(systemStatus) systemStatus.textContent = "SİSTEM AKTİF";
+            if(systemStatus) systemStatus.style.color = "var(--success)";
+            sensorInterval = setInterval(updateSensorReadings, 2500);
+            logToTerminal("[SİSTEM] Sulama sistemi manuel olarak başlatıldı.", "system");
         } else {
-            cevap.style.display = "none";
-            let ikon = this.querySelector("i");
-            if(ikon) ikon.style.transform = "rotate(0deg)";
+            pumpToggleBtn.textContent = "Sulama Sistemini Başlat";
+            pumpToggleBtn.classList.remove("active");
+            if(systemStatus) systemStatus.textContent = "SİSTEM BEKLEMEDE";
+            if(systemStatus) systemStatus.style.color = "var(--text-muted)";
+            clearInterval(sensorInterval);
+            logToTerminal("[SİSTEM] Sulama sistemi durduruldu.", "system");
+        }
+    }
+
+    // 4. Terminal Assistant
+    const terminalInput = document.getElementById("terminal-input");
+    const terminalBody = document.getElementById("terminal-body");
+
+    if (terminalInput) {
+        terminalInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                const command = terminalInput.value.trim().toLowerCase();
+                if (command === "") return;
+
+                logToTerminal(`> ${terminalInput.value}`, "user");
+                processCommand(command);
+                terminalInput.value = "";
+            }
+        });
+    }
+
+    function logToTerminal(message, type) {
+        if (!terminalBody) return;
+        const p = document.createElement("p");
+        if (type === 'user') {
+            p.innerHTML = `<span class="log-user">${message}</span>`;
+        } else {
+            p.innerHTML = message.replace('[SİSTEM]', '<span class="log-time">[SİSTEM]</span>')
+                                 .replace('[ASİSTAN]', '<span class="log-time">[ASİSTAN]</span>');
+        }
+        terminalBody.appendChild(p);
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    function processCommand(command) {
+        let response = "";
+        switch (command) {
+            case "durum":
+                response = `[ASİSTAN] Sistem durumu: ${systemStatus.textContent}.`;
+                break;
+            case "sıcaklık":
+            case "sıcaklık kaç":
+                response = `[ASİSTAN] Mevcut ortam sıcaklığı: ${valTemp.textContent}.`;
+                break;
+            case "nem":
+            case "nem kaç":
+                response = `[ASİSTAN] Mevcut bağıl nem: ${valHumidity.textContent}.`;
+                break;
+            case "sistemi başlat":
+                if (!isPumpActive) {
+                    togglePump();
+                    response = "[ASİSTAN] Sistem başlatılıyor...";
+                } else {
+                    response = "[ASİSTAN] Sistem zaten aktif durumda.";
+                }
+                break;
+            case "sistemi durdur":
+                if (isPumpActive) {
+                    togglePump();
+                    response = "[ASİSTAN] Sistem durduruluyor...";
+                } else {
+                    response = "[ASİSTAN] Sistem zaten durdurulmuş durumda.";
+                }
+                break;
+            case "yardım":
+                response = "[ASİSTAN] Kullanılabilir komutlar: 'durum', 'sıcaklık', 'nem', 'sistemi başlat', 'sistemi durdur', 'temizle'";
+                break;
+            case "temizle":
+                if(terminalBody) terminalBody.innerHTML = `<p><span class="log-time">[ASİSTAN]</span> Terminal temizlendi. Komutlarınızı bekliyorum.</p>`;
+                return; // No need to log a response for clear
+            default:
+                response = "[ASİSTAN] Komut anlaşılamadı. 'yardım' yazarak komutları görebilirsiniz.";
+        }
+        logToTerminal(response, "assistant");
+    }
+
+    // 5. FAQ Accordion
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(item => {
+        const question = item.querySelector(".faq-soru");
+        if (question) {
+            question.addEventListener("click", () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                if (!isActive) {
+                    item.classList.add("active");
+                }
+            });
         }
     });
-});
 
+    // 6. Contact Form Submission
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
 
-document.addEventListener("submit", function(e) {
-    
-    if (e.target && e.target.classList.contains("contact-form")) {
-        e.preventDefault(); 
-        let form = e.target;
-        let isimInput = form.querySelector(".contact-text");
-        let mailInput = form.querySelector(".contact-mail");
-        let mesajInput = form.querySelector(".contact-message");
-        let gonderBtn = form.querySelector(".contact-btn");
+        const contactBtn = document.getElementById("contactBtn");
+        const nameInput = document.getElementById("contactText");
+        const formData = new FormData(contactForm);
 
-        if (gonderBtn) {
-            gonderBtn.innerHTML = "Gönderiliyor...";
-            gonderBtn.style.backgroundColor = "#ff9800";
-            gonderBtn.disabled = true;
-        }
+        contactBtn.textContent = "Gönderiliyor...";
+        contactBtn.disabled = true;
 
-        setTimeout(() => {
-            let eskiMesaj = document.querySelector(".form-basari-mesaji");
-            if (eskiMesaj) eskiMesaj.remove();
+        fetch("https://formsubmit.co/ajax/resulmut49@gmail.com", {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            },
+        })
+        .then(response => response.ok ? response.json() : Promise.reject(response))
+        .then(data => {
+            displayFormStatus(`Teşekkürler ${nameInput.value}! Mesajınız başarıyla iletildi.`, 'success');
+            contactForm.reset();
+        })
+        .catch(error => {
+            console.error('Form gönderme hatası:', error);
+            displayFormStatus('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.', 'error');
+        })
+        .finally(() => {
+            contactBtn.textContent = "Mesajı Gönder";
+            contactBtn.disabled = false;
+        });
+    });
+}
 
-            form.insertAdjacentHTML("afterend", `
-                <div class="form-basari-mesaji" style="color: #4caf50; margin-top: 20px; font-weight: bold; text-align: center;">
-                    Teşekkürler ${isimInput ? isimInput.value : ''}! Mesajınız başarıyla sisteme iletildi.
-                </div>
-            `);
-
-            if (isimInput) isimInput.value = "";
-            if (mailInput) mailInput.value = "";
-            if (mesajInput) mesajInput.value = "";
-
-            if (gonderBtn) {
-                gonderBtn.innerHTML = "Gönder";
-                gonderBtn.style.backgroundColor = "";
-                gonderBtn.disabled = false;
-            }
-
-        }, 1500);
+// Form durum mesajlarını göstermek için yardımcı fonksiyon
+function displayFormStatus(message, type) {
+    let statusEl = document.querySelector(".form-status-mesaji");
+    if (!statusEl) {
+        statusEl = document.createElement('div');
+        statusEl.className = 'form-status-mesaji';
+        contactForm.insertAdjacentElement('afterend', statusEl);
     }
+
+    statusEl.textContent = message;
+    statusEl.style.cssText = `
+        text-align: center; 
+        margin-top: 20px; 
+        font-weight: bold; 
+        color: ${type === 'success' ? 'var(--success)' : 'var(--danger)'};
+    `;
+
+    setTimeout(() => { statusEl.textContent = ''; }, 6000);
+}
 });
